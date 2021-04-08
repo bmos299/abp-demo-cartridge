@@ -1,0 +1,18 @@
+######################################################### {COPYRIGHT-TOP} ###
+# Licensed Materials - Property of IBM
+# 5900-AEO
+#
+# Copyright IBM Corp. 2020, 2021. All Rights Reserved.
+#
+# US Government Users Restricted Rights - Use, duplication, or
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+######################################################### {COPYRIGHT-END} ###
+# This kustomization.yaml is not intended to be run by itself,
+# since it depends on service name and namespace that are out of this kustomize package.
+# It should be run by config/default
+resources:
+- bases/democartridge.ibm.com_iafdemoes.yaml
+# +kubebuilder:scaffold:crdkustomizeresource
+
+# configurations:
+# - kustomizeconfig.yaml

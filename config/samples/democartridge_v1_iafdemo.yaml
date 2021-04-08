@@ -1,0 +1,19 @@
+######################################################### {COPYRIGHT-TOP} ###
+# Licensed Materials - Property of IBM
+# 5900-AEO
+#
+# Copyright IBM Corp. 2020, 2021. All Rights Reserved.
+#
+# US Government Users Restricted Rights - Use, duplication, or
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+######################################################### {COPYRIGHT-END} ###
+apiVersion: democartridge.ibm.com/v1
+kind: IAFDemo
+metadata:
+  name: iafdemo-sample
+spec:
+  messagesPerGroup: "10"
+  secondsToPause: "1"
+  sequenceRepititions: "1"
+  license:
+    accept: true

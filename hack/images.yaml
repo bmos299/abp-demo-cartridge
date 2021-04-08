@@ -1,0 +1,10 @@
+images:
+  - id: DEMO_CARTRIDGE
+    registry: us.icr.io/abp-builds
+    name: iaf-demo-cartridge
+    tag: latest
+
+  - id: FLINK_PROCESSOR
+    registry: us.icr.io/abp-builds
+    name: iaf-demo-flink-processor
+    tag: latest

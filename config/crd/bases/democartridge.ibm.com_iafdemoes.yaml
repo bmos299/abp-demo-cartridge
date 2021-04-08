@@ -1,0 +1,85 @@
+######################################################### {COPYRIGHT-TOP} ###
+# Licensed Materials - Property of IBM
+# 5900-AEO
+#
+# Copyright IBM Corp. 2020, 2021. All Rights Reserved.
+#
+# US Government Users Restricted Rights - Use, duplication, or
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+######################################################### {COPYRIGHT-END} ###
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.3.0
+  creationTimestamp: null
+  name: iafdemoes.democartridge.ibm.com
+spec:
+  group: democartridge.ibm.com
+  names:
+    kind: IAFDemo
+    listKind: IAFDemoList
+    plural: iafdemoes
+    singular: iafdemo
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: IAFDemo is the Schema for the iafdemoes API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: IAFDemoSpec defines the desired state of IAFDemo
+            properties:
+              license:
+                description: By installing this component you accept the license terms
+                  http://ibm.biz/IAF-license
+                properties:
+                  accept:
+                    enum:
+                    - true
+                    type: boolean
+                required:
+                - accept
+                type: object
+              messagesPerGroup:
+                description: Number of messages to put on Kafka topic all at once
+                type: string
+              secondsToPause:
+                description: Number of seconds to pause between groups of Kafka messages
+                type: string
+              sequenceRepititions:
+                description: Number of times to submit the 1725 rows of sample data.
+                  Default is 1; '-1' means keep submitting forever.
+                type: string
+            required:
+            - license
+            type: object
+          status:
+            description: IAFDemoStatus defines the observed state of IAFDemo
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

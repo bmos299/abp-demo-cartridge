@@ -1,0 +1,53 @@
+######################################################### {COPYRIGHT-TOP} ###
+# Licensed Materials - Property of IBM
+# 5900-AEO
+#
+# Copyright IBM Corp. 2020, 2021. All Rights Reserved.
+#
+# US Government Users Restricted Rights - Use, duplication, or
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+######################################################### {COPYRIGHT-END} ###
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller-manager
+  labels:
+    control-plane: controller-manager
+spec:
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      serviceAccountName: operator
+      containers:
+      - command:
+        - /manager
+        args:
+        - --enable-leader-election
+        image: ${DEMO_CARTRIDGE}
+        imagePullPolicy: Always
+        name: operator
+        resources:
+          limits:
+            cpu: 200m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 60Mi
+        env:
+          - name: FUNCTION
+            value: operator
+          - name: SERVER_IMAGE
+            value: ${DEMO_CARTRIDGE}
+          - name: EVENT_PROCESSOR_IMAGE
+            value: ${FLINK_PROCESSOR}
+          - name: EVENT_PROCESSING_TASK_IMAGE
+            value: ${FLINK_PROCESSOR}
+          - name: USE_KNATIVE
+            value: "false"
+      terminationGracePeriodSeconds: 10

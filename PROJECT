@@ -1,0 +1,11 @@
+domain: ibm.com
+layout: go.kubebuilder.io/v2
+projectName: iaf-demo-cartridge
+repo: github.ibm.com/automation-base-pak/abp-demo-cartridge
+resources:
+- group: democartridge
+  kind: IAFDemo
+  version: v1
+version: 3-alpha
+plugins:
+  go.sdk.operatorframework.io/v2-alpha: {}
