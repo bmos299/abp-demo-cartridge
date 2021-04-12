@@ -64,7 +64,7 @@ Once that is available, you can run the Operator by creating a Subscription like
 If there is not already an OperatorGroup in the project, create one like this:
 ```bash
 cat <<EOF | oc apply -f -
-```
+
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
