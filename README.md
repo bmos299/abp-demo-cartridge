@@ -98,6 +98,7 @@ Note that this installs IBM Automation Foundation and Common Services operators 
 Finally, create an instance of the `IAFDemo` custom resource, managed by this operator, to actually run the demo scenario:
 ```bash
 cat <<EOF | oc apply -f -  
+
 apiVersion: democartridge.ibm.com/v1
 kind: IAFDemo
 metadata:
